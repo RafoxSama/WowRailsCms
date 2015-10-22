@@ -1,0 +1,46 @@
+<div id="contenu">
+  <div id="contenu-top2">
+    <div id="title">
+      Registration            
+    </div>
+  </div>
+  <div id="contenu-middle">
+  	<% flash.each do |key, value| %>
+	  <%= content_tag :div, value, class: "flash #{key}" %>
+	<% end %>
+	<% if @user.errors.any? %>
+		<ul class="errors">
+			<% for message in @user.errors.full_messages %>
+				<li>* <%= message %> </li>
+			<% end %>
+		</ul>
+	<% end %>
+    <span class="text">
+    <%= form_for(:user, :html => { id: 'inscription' } ) do |f| %>
+    	<%= f.label :email  %>
+    	<%= content_tag(:div, id: 'input') do %>
+    		<%= f.email_field :email, class: 'text_form', id: 'email_validation' %>
+    	<% end %>
+
+    	<%= f.label :email_confirmation  %>
+        <%= content_tag(:div, id: 'input') do %>
+        	<%= f.email_field :email_confirmation, class: 'text_form', id: 'email2_validation'  %>
+        <% end %>
+
+        <%= f.label :password %>
+        <%= content_tag(:div, id: 'input') do %>
+        	<%= f.password_field :password, class: 'text_form', id: 'password_validation'  %>
+        <% end %>
+
+        <%= f.label :password_confirmation %>
+        <%= content_tag(:div, id: 'input') do %>
+        	<%= f.password_field :password_confirmation, class: 'text_form', id: 'password2_validation'  %>
+        <% end %>
+
+        <%= content_tag(:div, id: 'validate') do %>
+        	<%= f.submit :Register, id: 'valide' %>
+        <% end %>
+    <% end %>
+    </span>
+  </div>
+</div>

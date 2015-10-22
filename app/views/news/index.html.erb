@@ -1,0 +1,28 @@
+<% if Settings.welcome.enabled %> 
+	<div id="welcome">
+		<div id="text">
+			<span class="title"> <%= Settings.welcome.title %> </span>
+			<br>
+			<span class="text"> <%= Settings.welcome.message %> </span>
+		</div>
+	</div>
+<% end %>
+<% @news.each do |post| %>
+<div id="contenu">
+	<div id="contenu-top">
+		<div id="title">
+			<%= link_to post.title, view_path(post) %>
+		</div>
+		<div id="date">
+                <%= post.updated_at.to_formatted_s(:short) %>
+        </div>
+	</div>
+	<div id="contenu-middle">
+		<span class="text">
+		<%= truncate_html(post.content, length: 440, omission: "...") %>
+		</span>
+	</div>
+	<div id="contenu-end">
+	</div>
+</div>
+<% end %>
