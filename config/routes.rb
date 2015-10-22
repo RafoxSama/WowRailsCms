@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get  'post/new'      => 'news#new',    as: :create_post
   post 'post/new'      => 'news#create'
   post 'post/edit/:id' => 'news#update'
+  get 'shop/:id' => 'shop#view'
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
